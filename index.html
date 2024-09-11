@@ -10,8 +10,34 @@
     <form>
         <label for="numberInput">Enter a number to play fizz buzz</label>
         <input type="text" id="numberInput">
-        <button type="submit">Play</button>
+        <button type="submit" onclick="handleSubmit(event)">Play</button>
     </form>
-    <div classname="output"></div>
+    <div id="output"></div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            document.getElementById('output').innerText = "";
+            let numArray = []
+            const number = document.getElementById('numberInput').value;
+            for (let i=1; i <= number; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    numArray.push("fizzbuzz");
+
+                } else if (i % 3 === 0) {
+                    numArray.push("fizz");
+
+                } else if ( i % 5 === 0) {
+                    numArray.push("buzz");
+
+                } else {
+                    numArray.push(i);
+                }
+            }
+
+            document.getElementById('output').innerText = numArray.join(', ');
+            document.getElementById('numberInput').value = "";
+        }
+    </script>
 </body>
 </html>
